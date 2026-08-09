@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAMA PHIM - Phim ngắn Hoa Ngữ</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#111;color:#fff;font-family:Arial,sans-serif}
+header{padding:18px 16px;background:#171717;position:sticky;top:0;z-index:2}
+.logo{font-size:25px;font-weight:800;color:#ffcc33}.tag{font-size:13px;color:#aaa;margin-top:4px}
+.search{margin-top:14px;width:100%;padding:12px;border:0;border-radius:8px;background:#292929;color:#fff}
+main{max-width:900px;margin:auto;padding:18px 14px}.title{font-size:20px;margin:8px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#1d1d1d;border-radius:10px;overflow:hidden}
+.poster{height:210px;background:linear-gradient(135deg,#3b3b3b,#171717);display:flex;align-items:center;justify-content:center;color:#aaa}
+.info{padding:10px}.name{font-weight:700}.meta{font-size:12px;color:#aaa;margin-top:5px}
+.watch{margin-top:14px;background:#222;padding:14px;border-radius:10px}.player{aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center;color:#777;border-radius:8px}
+button{background:#ffcc33;border:0;border-radius:7px;padding:9px 12px;font-weight:700;margin-top:10px}
+footer{text-align:center;color:#777;padding:30px 15px;font-size:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}.poster{height:260px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">DRAMA PHIM</div>
+  <div class="tag">Phim ngắn Hoa Ngữ • Xem phim được phép sử dụng</div>
+  <input class="search" id="search" placeholder="🔍 Tìm tên phim..." oninput="filterMovies()">
+</header>
+
+<main>
+  <div class="title">🔥 Phim nổi bật</div>
+  <section class="grid" id="movies">
+    <article class="card" data-name="Phim mẫu 1">
+      <div class="poster">POSTER</div>
+      <div class="info"><div class="name">Phim mẫu 1</div><div class="meta">Tập 1 • Full</div>
+      <button onclick="watch('Phim mẫu 1')">Xem phim</button></div>
+    </article>
+    <article class="card" data-name="Phim mẫu 2">
+      <div class="poster">POSTER</div>
+      <div class="info"><div class="name">Phim mẫu 2</div><div class="meta">Tập 1 • Full</div>
+      <button onclick="watch('Phim mẫu 2')">Xem phim</button></div>
+    </article>
+  </section>
+
+  <section class="watch" id="watch" style="display:none">
+    <div class="title" id="watchTitle"></div>
+    <div class="player">VIDEO FULL SẼ ĐẶT Ở ĐÂY</div>
+    <p style="color:#aaa;font-size:13px">Đây là vị trí để nhúng video mà bạn có quyền sử dụng.</p>
+  </section>
+</main>
+<footer>© 2026 DRAMA PHIM</footer>
+
+<script>
+function watch(name){
+  document.getElementById('watch').style.display='block';
+  document.getElementById('watchTitle').textContent='🎬 '+name;
+  document.getElementById('watch').scrollIntoView({behavior:'smooth'});
+}
+function filterMovies(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=c.dataset.name.toLowerCase().includes(q)?'block':'none';
+  });
+}
+</script>
+</body>
+</html>
